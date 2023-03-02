@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'App_04',
     'App_05',
     'App_06',
+    'App_07',
 ]
 
 MIDDLEWARE = [
@@ -64,8 +65,7 @@ ROOT_URLCONF = 'Learn_django.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
-        ,
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -85,8 +85,12 @@ WSGI_APPLICATION = 'Learn_django.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',  # 设置数据库为 mysql
+        'HOST': '127.0.0.1',  # 数据库主机名
+        'PORT': 3306,  # 数据库端口号
+        'USER': 'root',  # 数据库用户
+        'PASSWORD': '023017lys',  # 数据库密码
+        'NAME': 'learn_django'  # 创建数据库的名称
     }
 }
 
@@ -138,8 +142,8 @@ CACHES = {
     }
 }
 
-SESSION_ENGINE = 'django.contrib.sessions.backends.cache' # 指定以缓存的方式存储session
-SESSION_CACHE_ALIAS = "default" # 指定缓存的默认Redis库
+SESSION_ENGINE = 'django.contrib.sessions.backends.cache'  # 指定以缓存的方式存储session
+SESSION_CACHE_ALIAS = "default"  # 指定缓存的默认Redis库
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
