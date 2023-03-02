@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lys info</title>
+</head>
+<body>
+
+    <h1>This is LYS info</h1>
+    <p> {{ name }}'s blog is {{ info.blog }} and it is {{ info.status }}</p>
+    {#  使用 for 循环打印所有键和值  #}
+    <ul>
+        {% for k,v in info.items %}
+            {{ k }}:{{ v }}
+            {% if k == 'blog' %}
+                    This is blog info.
+            {% else %}
+                    This is not blog info.
+            {% endif %}
+        {% endfor %}
+    </ul>
+</body>
+</html>
