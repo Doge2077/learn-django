@@ -108,5 +108,6 @@ class db_view(View):
         # 日期查询
         # vtb_list = Vtb_info.objects.filter(vtb_age__year='2023')
         vtb_list = Vtb_info.objects.filter(vtb_age__gte='2023-1-14')
+
         print(vtb_list)
         return HttpResponse('Vtb found.')

@@ -19,6 +19,13 @@ class Vtb_info(models.Model):
     def __str__(self):
         return self.vtb_name  # 一般返回名称
 
+    # 手写一个展示列的方法
+    def vtb_fire(self):
+        if self.vtb_reborn > 0 and self.vtb_price >= 114514:
+            return '赢'
+        else:
+            return '输'
+    vtb_fire.short_description = '爆火'
 
 # 定义信息类 Ski_info_A
 class Ski_info_A(models.Model):
