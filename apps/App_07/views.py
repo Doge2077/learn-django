@@ -69,8 +69,44 @@ class db_view(View):
         # print(Vtb_info.objects.count())
 
         # 过滤查询：
-        # 以 filter 为例子
+        # 以 filter 为例子，返回查询集
 
+        # exact 精确等于查询，查询 vtb_name='Liiys' 的对象
+        # vtb_list1 = Vtb_info.objects.filter(vtb_name='Liiys')
+        # vtb_list2 = Vtb_info.objects.filter(vtb_name__exact='Liiys')
 
+        # exclude 查询 vtb_name 不为 'Liiys' 的对象
+        # vtb_list = Vtb_info.objects.exclude(vtb_name__exact='Liiys')
+        # print(vtb_list)
 
+        # contains 模糊查询，查询 vtb_name 包含 'Ly' 的对象
+        # vtb_list = Vtb_info.objects.filter(vtb_name__contains='Ly')
+        # print(vtb_list)
+
+        # startswith 查询以指定值开头的对象， endswith 查询以指定值结尾的对象，两个方法区分大小写，不区分可以使用 istartswith iendswith
+        # vtb_list1 = Vtb_info.objects.filter(vtb_name__startswith='Li')
+        # vtb_list2 = Vtb_info.objects.filter(vtb_name__endswith='S')
+        # print(vtb_list1)
+        # print(vtb_list2)
+
+        # isnull 空查询，查询值为空的对象，__isnull=True 查询值为空的对象，反之查询值不为空的对象
+        # vtb_list = Vtb_info.objects.filter(vtb_name__isnull=False)
+        # print(vtb_list)
+
+        # in 范围查询，查询对象值是否包含在集合内
+        # vtb_list1 = Vtb_info.objects.filter(vtb_name__in=['LYS', 'lys'])
+        # vtb_list2 = Vtb_info.objects.filter(vtb_price__in=[114514, 1919, 24])
+        # print(vtb_list1)
+        # print(vtb_list2)
+
+        # 比较查询:
+        # gt: >     gte: >=
+        # lt <      lte: <=
+        # vtb_list = Vtb_info.objects.filter(vtb_price__gte=1919, vtb_price__lt=999999999)
+        # print(vtb_list)  # 查询 1919 <= vtb_price < 999999999 的对象
+
+        # 日期查询
+        # vtb_list = Vtb_info.objects.filter(vtb_age__year='2023')
+        vtb_list = Vtb_info.objects.filter(vtb_age__gte='2023-1-14')
+        print(vtb_list)
         return HttpResponse('Vtb found.')
