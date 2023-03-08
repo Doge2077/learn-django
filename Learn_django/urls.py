@@ -34,6 +34,7 @@ urlpatterns = [
     path('app05/', include(('App_05.urls', 'App_05'), namespace='App_05')),
     path('app06/', include(('App_06.urls', 'App_06'), namespace='App_06')),
     path('app07/', include(('App_07.urls', 'App_07'), namespace='App_07')),
+    path('app08/', include(('App_08.urls', 'App_08'), namespace='App_08')),
 
     # media 静态文件路由
     re_path(r'^media/(?P<path>.+)$', serve, {'document_root': settings.MEDIA_ROOT})

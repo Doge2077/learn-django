@@ -21,7 +21,7 @@ class db_view(View):
             vtb_name='Liiys',
             vtb_price=999999999.99,
             vtb_exp=0,
-            vtb_reborn=True,
+            vtb_reborn=0,
             vtb_age='2002-3-30',
         )
         # 此方式创建无需保存 推荐使用
