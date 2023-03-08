@@ -127,9 +127,15 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+# 指定 static 静态文件地址
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
+
+MEDIA_URL = 'media/'
+
+# 指定 media 文件夹的路径
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # 配置Redis缓存的信息
 CACHES = {
