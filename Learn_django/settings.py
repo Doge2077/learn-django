@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'App_06',
     'App_07',
     'App_08',
+    'rest_framework',  # 注册 DRF 框架
 ]
 
 MIDDLEWARE = [

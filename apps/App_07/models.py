@@ -7,7 +7,7 @@ class Vtb_info(models.Model):
     vtb_name = models.CharField(max_length=114, default='Hiiro', verbose_name='名称')
     vtb_price = models.FloatField(default=114514.1919, verbose_name='价格')
     vtb_exp = models.IntegerField(default=233, verbose_name='次数')
-    vtb_reborn = models.ImageField(default=0, verbose_name='转生次数')
+    vtb_reborn = models.IntegerField(default=0, verbose_name='转生次数')
     vtb_age = models.DateField(verbose_name='时间', auto_now_add=True)
     vtb_image = models.ImageField(upload_to='vtb_image', verbose_name='头像', null=True)
 
