@@ -158,3 +158,51 @@ SESSION_CACHE_ALIAS = "default"  # 指定缓存的默认Redis库
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# DRF 框架配置信息
+REST_FRAMEWORK = {
+    # 设置响应渲染类
+    'DEFAULT_RENDERER_CLASSES': (  # 默认响应渲染类
+        'rest_framework.renderers.JSONRenderer',  # json渲染器
+        'rest_framework.renderers.BrowsableAPIRenderer',  # 浏览API渲染器
+    ),
+    # 配置用户信息认证（全局认证）
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',  # 基本认证
+        'rest_framework.authentication.SessionAuthentication',  # session 认证
+    ),
+    # 配置用户的权限信息
+    'DEFAULT_PERMISSION_CLASSES': (
+
+        # # AllowAny 允许所有用户
+        # 'rest_framework.permissions.AllowAny',
+        #
+        # # IsAuthenticated 仅通过认证的用户
+        'rest_framework.permissions.IsAuthenticated',
+        #
+        # # IsAdminUser 仅管理员用户
+        # 'rest_framework.permissions.IsAdminUser',
+        #
+        # # IsAuthenticatedOrReadOnly 认证的用户可以完全操作，否则只能get读取
+        # 'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+    ),
+    # 限流配置（全局配置）
+    'DEFAULT_THROTTLE_CLASSES': (
+        'rest_framework.throttling.AnonRateThrottle',  # 匿名用户
+        'rest_framework.throttling.UserRateThrottle'  # 认证用户
+    ),
+    'DEFAULT_THROTTLE_RATES': {
+        'anon': '100/day',  # 匿名用户的限流标准 24h 内 100 次访问
+        'user': '1000/day'  # 认证用户的限流标准
+    },
+
+    # 配置分页信息（全局配置）
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 100,  # 每页数据的条目数量
+
+    # 配置异常处理
+    'EXCEPTION_HANDLER': 'my_project.my_app.utils.custom_exception_handler',
+
+    # 生成接口文档
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
+}

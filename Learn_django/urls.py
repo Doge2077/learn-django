@@ -21,6 +21,8 @@ from django.contrib import admin
 from django.urls import path, re_path, include
 from django.views.generic import RedirectView
 from django.views.static import serve
+from rest_framework.documentation import include_docs_urls
+
 from Learn_django import settings
 
 urlpatterns = [
@@ -36,6 +38,9 @@ urlpatterns = [
     path('app07/', include(('App_07.urls', 'App_07'), namespace='App_07')),
     path('app08/', include(('App_08.urls', 'App_08'), namespace='App_08')),
     path('app09/', include(('App_09.urls', 'App_09'), namespace='App_09')),
+
+    # 自动生成接口 API
+    path('docs/', include_docs_urls(title='Vtbers API')),
 
     # media 静态文件路由
     re_path(r'^media/(?P<path>.+)$', serve, {'document_root': settings.MEDIA_ROOT})
