@@ -168,7 +168,7 @@ REST_FRAMEWORK = {
     ),
     # 配置用户信息认证（全局认证）
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.BasicAuthentication',  # 基本认证
+        'rest_framework.authentication.BasicAuthentication',    # 基本认证
         'rest_framework.authentication.SessionAuthentication',  # session 认证
     ),
     # 配置用户的权限信息
